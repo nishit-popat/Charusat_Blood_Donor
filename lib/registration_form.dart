@@ -104,7 +104,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                     children: <Widget>[
                       CustomTextField(
                         icon: Icon(Icons.person, color: Colors.black54,),
-                        hintText: 'Full Name',
+                        hintText: 'Enter Full Name',
                         onChange: (value) {},
                       ),
                       SizedBox(height: 15),
