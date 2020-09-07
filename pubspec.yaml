@@ -23,6 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  firebase_core: ^0.4.0+9
+  firebase_analytics: ^5.0.2
+  firebase_auth: ^0.14.0+5
+  cloud_firestore: ^0.12.9+5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,11 +67,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  fonts:
-     - family: Roboto
-       fonts:
-         - asset: fonts/Roboto-Black.ttf
-         - asset: fonts/Roboto-Italic.ttf
+#  fonts:
+#     - family: Roboto
+#       fonts:
+#         - asset: fonts/Roboto-Black.ttf
+#         - asset: fonts/Roboto-Italic.ttf
 
   #   - family: Trajan Pro
   #     fonts:
