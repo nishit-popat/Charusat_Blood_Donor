@@ -20,7 +20,7 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.light,
         primaryColor: Color(0XFFFF4D4D),
         accentColor: Colors.redAccent,
-        fontFamily: 'Roboto-Black',
+        //fontFamily: 'Roboto-Black',
       ),
       home: LoginScreen(),
     );
