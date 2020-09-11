@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:registration_and_log_in/loginscreen.dart';
 import 'package:registration_and_log_in/registration_form.dart';
-import 'form_widgets.dart';
+import 'package:registration_and_log_in/user_dashboard.dart';
+import 'widgets/form_widgets.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,7 +23,7 @@ class _MyAppState extends State<MyApp> {
         accentColor: Colors.redAccent,
         fontFamily: 'Roboto-Black',
       ),
-      home: LoginScreen(),
+      home: UserDashboard(),
     );
   }
 }
