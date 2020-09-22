@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_and_log_in/constants.dart';
+import 'package:charusat_blood_donor/constants.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;

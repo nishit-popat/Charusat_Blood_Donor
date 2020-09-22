@@ -1,6 +1,6 @@
-# registration_and_log_in
+# charusat_blood_donor
 
-Registration And Login Screen
+A new Flutter application.
 
 ## Getting Started
 

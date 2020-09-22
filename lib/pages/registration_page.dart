@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:registration_and_log_in/constants.dart';
 import 'package:intl/intl.dart';
-import 'package:registration_and_log_in/widgets/custom_text_field.dart';
+import 'package:charusat_blood_donor/widgets/custom_text_field.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:charusat_blood_donor/constants.dart';
+import 'package:charusat_blood_donor/stores/user_database.dart';
 
 class RegistrationForm extends StatefulWidget {
   @override
@@ -10,6 +11,8 @@ class RegistrationForm extends StatefulWidget {
 }
 
 class _RegistrationFormState extends State<RegistrationForm> {
+
+  UserDatabase userDatabase;
 
   List<String> gender = ["Male", "Female", "Other"];
   var _bloodGroups = [
@@ -24,10 +27,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
   ];
   final dateFormat = DateFormat.yMd();
   final _formKey = GlobalKey<FormState>();
-  String select;
+  String name;
+  String city;
+  String Gender;
+  String email;
   DateTime birthDate;
   String bloodGroup;
-  String _currentSelectedBloodGroup;
+  String currentSelectedBloodGroup;
+  String disease;
 
   //Radio Button Widget Builder
   Row addRadioButton(int btnValue, String title) {
@@ -35,13 +42,12 @@ class _RegistrationFormState extends State<RegistrationForm> {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Radio(
-          activeColor: primary_color,
+          activeColor: Colors.redAccent,
           value: gender[btnValue],
-          groupValue: select,
+          groupValue: Gender,
           onChanged: (value) {
             setState(() {
-              print(value);
-              select = value;
+              Gender = title;
             });
           },
         ),
@@ -105,7 +111,11 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       CustomTextField(
                         icon: Icon(Icons.person, color: Colors.black54,),
                         hintText: 'Full Name',
-                        onChange: (value) {},
+                        onChange: (value) {
+                          setState(() {
+                            name = value;
+                          });
+                        },
                       ),
                       SizedBox(height: 15),
                       Padding(
@@ -130,18 +140,22 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       CustomTextField(
                         icon: Icon(Icons.email,color: Colors.black54,),
                         hintText: 'Email',
-                        onChange: (value) {},
+                        onChange: (value) {
+                          setState(() {
+                            email=value;
+                          });
+                        },
                         validator: (value) {},
                         keyBoardtype: TextInputType.emailAddress,
                       ),
                       SizedBox(height: 15),
-                      CustomTextField(
+                      /*CustomTextField(
                         icon: Icon(Icons.phone,color: Colors.black54,),
                         hintText: 'Mobile Number',
                         onChange: (value) {},
                         validator: (value) {},
                         keyBoardtype: TextInputType.phone,
-                      ),
+                      ),*/
                       SizedBox(height: 15),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 19.0),
@@ -203,14 +217,14 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                     border: InputBorder.none,
                                     focusedBorder: InputBorder.none,
                                       ),
-                                  isEmpty: _currentSelectedBloodGroup == '',
+                                  isEmpty: currentSelectedBloodGroup == '',
                                   child: DropdownButtonHideUnderline(
                                     child: DropdownButton<String>(
-                                      value: _currentSelectedBloodGroup,
+                                      value: currentSelectedBloodGroup,
                                       isDense: true,
                                       onChanged: (String newValue) {
                                         setState(() {
-                                          _currentSelectedBloodGroup = newValue;
+                                          currentSelectedBloodGroup = newValue;
                                           state.didChange(newValue);
                                         });
                                       },
@@ -241,13 +255,21 @@ class _RegistrationFormState extends State<RegistrationForm> {
                       CustomTextField(
                         hintText: 'City',
                         icon: Icon(Icons.location_city,color: Colors.black54,),
-                        onChange: (value) {},
+                        onChange: (value) {
+                          setState(() {
+                            city=value;
+                          });
+                        },
                       ),
                       SizedBox(height: 15),
                       CustomTextField(
                         hintText: 'Disease(If any)',
                         icon: Icon(Icons.accessibility,color: Colors.black54,),
-                        onChange: (value) {},
+                        onChange: (value) {
+                          setState(() {
+                            disease=value;
+                          });
+                        },
                       ),
                       SizedBox(height: 25),
                       Center(
@@ -259,7 +281,16 @@ class _RegistrationFormState extends State<RegistrationForm> {
                               'Submit',
                               style: kSubmitButtonTextSyle,
                             ),
-                            onPressed: () {},
+                            onPressed: () async{
+                              await userDatabase.updateUserData(name, Gender, email, currentSelectedBloodGroup.toString(), bloodGroup, city, disease);
+//                              print(name);
+//                              print(city);
+//                              print(disease);
+//                              print(birthDate.toString());
+//                              print(email);
+//                              print(_currentSelectedBloodGroup);
+//                              print(Gender);
+                            },
                           ),
                         ),
                       ),
