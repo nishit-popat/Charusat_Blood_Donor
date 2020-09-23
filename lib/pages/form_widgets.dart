@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-
-
-
 class FormWidgetsDemo extends StatefulWidget {
   @override
   _FormWidgetsDemoState createState() => _FormWidgetsDemoState();

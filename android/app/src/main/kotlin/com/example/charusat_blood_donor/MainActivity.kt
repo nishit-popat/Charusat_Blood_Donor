@@ -1,4 +1,4 @@
-package com.example.registration_and_log_in
+package com.example.charusat_blood_donor
 
 import io.flutter.embedding.android.FlutterActivity
 
