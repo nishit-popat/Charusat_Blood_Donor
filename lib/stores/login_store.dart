@@ -134,4 +134,8 @@ abstract class LoginStoreBase with Store {
     await Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginPage()), (Route<dynamic> route) => false);
     firebaseUser = null;
   }
+
+  Stream<FirebaseUser> get user {
+    return _auth.onAuthStateChanged;
+  }
 }

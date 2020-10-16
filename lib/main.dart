@@ -1,3 +1,4 @@
+import 'package:charusat_blood_donor/admin_side/screens/admin_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:splashscreen/splashscreen.dart';
@@ -15,15 +16,15 @@ class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
 
-
     return MultiProvider(
       providers: [
         Provider<LoginStore>(
           create: (_) => LoginStore(),
-        )
+        ),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
         home: SplashPage(),
+       // home: AdminDashboard(),
       ),
     );
   }
