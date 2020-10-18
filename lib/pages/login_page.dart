@@ -1,4 +1,5 @@
 import 'package:charusat_blood_donor/admin_side/screens/admin_dashboard.dart';
+import 'package:charusat_blood_donor/admin_side/screens/admin_login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -113,12 +114,9 @@ class _LoginPageState extends State<LoginPage> {
                                   onPressed: () async {
                                     if (phoneController.text.isNotEmpty) {
                                       if(phoneController.text.toString() == "1234567890"){
-                                        try{
-                                          await FirebaseAuth.instance.signInAnonymously();
-                                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => AdminDashboard()), (Route<dynamic> route) => false);
-                                        }catch(e){
-                                          print(e);
-                                        }
+                                         // await FirebaseAuth.instance.signInAnonymously();
+                                          Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => AdminLoginPage()), (Route<dynamic> route) => false);
+
                                         }else {
                                         loginStore.getCodeWithPhoneNumber(
                                           context,

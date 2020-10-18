@@ -287,7 +287,7 @@ class _RegistrationFormState extends State<RegistrationForm> {
                                 await UserDatabase(uid: uid).setUserData(name, Gender, email, birthDate.toString(), currentSelectedBloodGroup , city, disease);
 
                                 Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute
-                                  (builder: (_) => UserDashboard(uid: uid)), (Route<dynamic> route) => false);
+                                  (builder: (_) => UserDashboard(uid: uid,bloodGroup: currentSelectedBloodGroup)), (Route<dynamic> route) => false);
                               },
                             ),
                           ),

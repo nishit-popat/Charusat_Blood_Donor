@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 
 class RequestModel{
 
-  static int reqId = 0;
+  String reqNo;
   String bloodGrp;
-  int quantity;
+  String quantity;
   String isUrgent;
-  DateTime currentDate;
-  TimeOfDay currentTime;
+  String currentDate;
+  String currentTime;
 
-  RequestModel({this.bloodGrp, this.isUrgent, this.quantity, this.currentDate, this.currentTime});
+  RequestModel({this.reqNo, this.bloodGrp, this.quantity, this.isUrgent, this.currentDate, this.currentTime});
 }

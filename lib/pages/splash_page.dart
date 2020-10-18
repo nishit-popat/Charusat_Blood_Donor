@@ -1,3 +1,4 @@
+import 'package:charusat_blood_donor/pages/user_dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:charusat_blood_donor/pages/home_page.dart';
@@ -18,7 +19,7 @@ class _SplashPageState extends State<SplashPage> {
     super.initState();
     Provider.of<LoginStore>(context, listen: false).isAlreadyAuthenticated().then((result) {
       if (result) {
-        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const HomePage()), (Route<dynamic> route) => false);
+        Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) =>  UserDashboard()), (Route<dynamic> route) => false);
       } else {
         Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const LoginPage()), (Route<dynamic> route) => false);
       }

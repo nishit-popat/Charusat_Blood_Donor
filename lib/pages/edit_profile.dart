@@ -30,11 +30,11 @@ class _EditProfileState extends State<EditProfile> {
 
   final dateFormat = DateFormat.yMd();
   final _formKey = GlobalKey<FormState>();
-  String currentName="";
-  String currentCity="";
-  String currentEmail="";
+  String currentName;
+  String currentCity;
+  String currentEmail;
   String currentSelectedBloodGroup;
-  String currentDisease="";
+  String currentDisease;
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +125,7 @@ class _EditProfileState extends State<EditProfile> {
                                       isEmpty: currentSelectedBloodGroup == '',
                                       child: DropdownButtonHideUnderline(
                                         child: DropdownButton<String>(
-                                          value: currentSelectedBloodGroup,
+                                          value: currentSelectedBloodGroup ?? user.bloodGroup,
                                           isDense: true,
                                           onChanged: (String newValue) {
                                             setState(() {
@@ -190,7 +190,7 @@ class _EditProfileState extends State<EditProfile> {
                                     'Update Profile Info',
                                     style: kSubmitButtonEditTextSyle,
                                   ),
-                                  onPressed: () async{
+                                  onPressed: () async {
                                     /*if(currentName != null){
                                       await UserDatabase(uid: widget.uid).updateUserName(currentName);
                                     }
@@ -208,14 +208,15 @@ class _EditProfileState extends State<EditProfile> {
                                     }*/
 
 
-                                    print(currentEmail);
-                                    print(currentCity);
-                                    print(currentDisease);
-                                    print(currentSelectedBloodGroup);
+
                                     await UserDatabase(uid: widget.uid).setUserData(currentName ?? user.name, null, currentEmail ?? user.email,
                                         user.birthDate.toString(),currentSelectedBloodGroup ?? user.bloodGroup, currentCity ?? user.city,
                                         currentDisease ?? user.disease);
                                     print(currentName);
+                                    print(currentEmail);
+                                    print(currentCity);
+                                    print(currentDisease);
+                                    print(currentSelectedBloodGroup);
                                     Navigator.of(context).pop();
                                   },
                                 ),

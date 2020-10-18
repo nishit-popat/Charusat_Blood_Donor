@@ -10,14 +10,15 @@ class FloatRequestPage extends StatefulWidget {
 
 class _FloatRequestPageState extends State<FloatRequestPage> {
 
-  ReqDatabase reqDatabase = ReqDatabase();
+  ReqDatabase reqDatabase = new ReqDatabase();
   final _formKey = GlobalKey<FormState>();
   List<String> isUrgent = ["Yes", "No"];
   String currentSelectedBloodGroup;
-  int quantity;
+  String quantity;
   DateTime currentDate = DateTime.now();
   TimeOfDay currentTime = TimeOfDay.now();
   String urgent;
+  static int reqNo=0;
   var _bloodGroups = [
     "A+ve",
     "A-ve",
@@ -159,8 +160,16 @@ class _FloatRequestPageState extends State<FloatRequestPage> {
                         style: kSubmitButtonTextSyle,
                       ),
                       onPressed: () async {
+                        reqNo++;
+                        print(reqNo.toString());
+                        print(currentSelectedBloodGroup);
+                        print(quantity);
+                        print(urgent);
+                        print(currentDate);
+                        print(currentTime);
                         try{
-                          await reqDatabase.addRequest(currentSelectedBloodGroup, quantity, urgent, currentDate.toString(), currentTime.toString());
+                          await reqDatabase.addRequest( reqNo.toString(),currentSelectedBloodGroup, quantity, urgent, currentDate.toString(), currentTime.toString());
+                          Navigator.of(context).pop();
                         }
                         catch(e){
                           print(e);

@@ -4,8 +4,9 @@ class BloodGroupThumbnailWidget extends StatelessWidget{
 
   final String requirement;
   final String bloodGroup;
+  final String SelectedbloodGrp;
 
-  const BloodGroupThumbnailWidget({Key key, this.requirement, this.bloodGroup}) : super(key: key);
+  const BloodGroupThumbnailWidget({Key key, this.requirement, this.bloodGroup,this.SelectedbloodGrp}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,7 @@ class BloodGroupThumbnailWidget extends StatelessWidget{
                     child:  Container(
                       alignment: Alignment.center,
                       color: Colors.black87,
-                      child: Text(bloodGroup != null ? bloodGroup : "B+ve", style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)),
+                      child: Text(bloodGroup != null ? bloodGroup : SelectedbloodGrp, style: TextStyle(color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold)),
                     ),
                   )
                 ],

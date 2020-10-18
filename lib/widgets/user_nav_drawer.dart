@@ -1,13 +1,55 @@
+import 'package:charusat_blood_donor/pages/home_page.dart';
+import 'package:charusat_blood_donor/stores/login_store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:charusat_blood_donor/pages/edit_profile.dart';
+import 'package:provider/provider.dart';
 
-class UserNavDrawer extends StatelessWidget {
+
+class UserNavDrawer extends StatefulWidget {
 
   final String uid;
-  UserNavDrawer({this.uid});
+  final String bloodGroup;
+  UserNavDrawer({this.uid,this.bloodGroup});
+
+  @override
+  _UserNavDrawerState createState() => _UserNavDrawerState();
+}
+
+
+class _UserNavDrawerState extends State<UserNavDrawer> {
+
+  showAlertDialog(BuildContext context,String bloodGroup) {
+    // set up the button
+    Widget okButton = FlatButton(
+      child: Text("OK"),
+      onPressed: () {
+        Navigator.of(context).pop();
+      },
+    );
+
+    // set up the AlertDialog
+    AlertDialog alert = AlertDialog(
+      title: Text("Blood Group"),
+      content: Text("Your Blood Group :" + bloodGroup),
+      actions: [
+        okButton,
+      ],
+    );
+
+    // show the dialog
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return alert;
+      },
+    );
+  }
+
+
   @override
   Widget build(BuildContext context) {
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -35,23 +77,26 @@ class UserNavDrawer extends StatelessWidget {
             title: Text('User Profile'),
             onTap: () => {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => EditProfile(uid: uid)), ),
+                  MaterialPageRoute(builder: (context) => EditProfile(uid: widget.uid)), ),
             },
           ),
           ListTile(
             leading: Icon(Icons.adjust),
             title: Text('Blood Group'),
-            onTap: () => {Navigator.of(context).pop()},
+            onTap: () {
+              setState(() {
+                showAlertDialog(context,widget.bloodGroup.toString());
+              });
+            },
           ),
           ListTile(
-            leading: Icon(Icons.history),
-            title: Text('Request History'),
-            onTap: () => {Navigator.of(context).pop()},
-          ),
-          ListTile(
-            leading: Icon(Icons.contacts),
-            title: Text('Contact Us'),
-            onTap: () => {Navigator.of(context).pop()},
+            leading: Icon(Icons.assignment_ind),
+            title: Text('Sign Out'),
+            onTap: () {
+              Navigator.push(context,
+                MaterialPageRoute(builder: (context) => HomePage()),
+              );
+            },
           ),
         ],
       ),

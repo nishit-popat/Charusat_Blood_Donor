@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:charusat_blood_donor/widgets/blood_thumbnail.dart';
 
 class RecentUpdateListWidget extends StatelessWidget {
+  final String date;
+  final String selectedBloodGrp;
+  final String isUrgent;
+
+  RecentUpdateListWidget({this.isUrgent,this.date,this.selectedBloodGrp});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -22,7 +27,7 @@ class RecentUpdateListWidget extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: EdgeInsets.symmetric(vertical: 10.0),
-            child: BloodGroupThumbnailWidget(),
+            child: BloodGroupThumbnailWidget(requirement: isUrgent, SelectedbloodGrp: selectedBloodGrp,),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,12 +46,11 @@ class RecentUpdateListWidget extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 2.0, horizontal: 10.0),
                 child: Text(
-                  'Accepted/Pending     24/10/2020',
+                  'Accepted/Pending' + date,
                 ),
               ),
             ],
           ),
-
         ],
       ),
     );

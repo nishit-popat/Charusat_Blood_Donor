@@ -51,7 +51,7 @@ class PercentageWidget extends StatelessWidget{
         Center(
           child: Expanded(
             flex: 2,
-            child: Text('$count', style: TextStyle( fontSize: 35.0, fontWeight: FontWeight.bold)),
+            child: Text('$count', style: TextStyle( fontSize: 40.0, fontWeight: FontWeight.bold)),
           ),
         ),
       ],
