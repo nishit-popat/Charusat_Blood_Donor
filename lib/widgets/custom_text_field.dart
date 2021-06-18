@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_and_log_in/constants.dart';
+import 'package:charusat_blood_donor/constants.dart';
 
 class CustomTextField extends StatelessWidget {
   final String hintText;
@@ -8,13 +8,15 @@ class CustomTextField extends StatelessWidget {
   final Function validator;
   final Icon icon;
  final keyBoardtype;
+ final initialtext;
 
   CustomTextField({
-   @required this.hintText,
+    this.hintText,
    @required this.onChange,
     this.validator,
      this.icon,
     this.keyBoardtype,
+    this.initialtext
 });
   @override
   Widget build(BuildContext context) {
@@ -28,6 +30,7 @@ class CustomTextField extends StatelessWidget {
               keyboardType: keyBoardtype,
               validator: validator,
               cursorColor: Colors.red,
+              initialValue: initialtext,
               decoration: InputDecoration(
                 hintStyle : TextStyle(
                   color : Colors.grey,

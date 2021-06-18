@@ -1,29 +1,31 @@
+import 'package:charusat_blood_donor/admin_side/screens/admin_dashboard.dart';
 import 'package:flutter/material.dart';
-import 'package:registration_and_log_in/loginscreen.dart';
-import 'package:registration_and_log_in/registration_form.dart';
-import 'form_widgets.dart';
+import 'package:provider/provider.dart';
+import 'package:splashscreen/splashscreen.dart';
+import 'package:charusat_blood_donor/pages/splash_page.dart';
+import 'package:charusat_blood_donor/stores/login_store.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(App());
 
-class MyApp extends StatefulWidget {
+class App extends StatefulWidget {
   @override
-  _MyAppState createState() => _MyAppState();
+  _AppState createState() => _AppState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        brightness: Brightness.light,
-        primaryColor: Color(0XFFFF4D4D),
-        accentColor: Colors.redAccent,
-        fontFamily: 'Roboto-Black',
+
+    return MultiProvider(
+      providers: [
+        Provider<LoginStore>(
+          create: (_) => LoginStore(),
+        ),
+      ],
+      child: MaterialApp(
+        home: SplashPage(),
+       // home: AdminDashboard(),
       ),
-      home: LoginScreen(),
     );
   }
 }
-

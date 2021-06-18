@@ -22,3 +22,10 @@ const kSubmitButtonTextSyle = TextStyle(
   color: Colors.white,
 );
 
+const kSubmitButtonEditTextSyle = TextStyle(
+  fontSize: 20.0,
+  color: Colors.white,
+
+);
+
+
