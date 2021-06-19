@@ -1,4 +1,4 @@
-                            # Charusat_Blood_Donor
+# Charusat_Blood_Donor
 
 Charusat blood donor is a mobile application that will fulfill the emergency blood request by charusat hospital at changa.
 
